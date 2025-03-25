@@ -42,27 +42,29 @@ const Scanner: React.FC = () => {
           />
         
         }
+
+      <button 
+        onClick={startCam} 
+        className="mt-4 bg-green-900 text-white px-4 py-2 rounded-md"
+      >
+        turn on
+      </button>  
+      
+      <button 
+        onClick={off} 
+        className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md"
+      >
+        turn off
+      </button>
       
       <button 
         onClick={capture} 
         className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
       >
-        Capture Image
+        Capture 📸
       </button>
 
-      <button 
-        onClick={off} 
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
-      >
-        turn off
-      </button>
-
-      <button 
-        onClick={startCam} 
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
-      >
-        turn on
-      </button>
+      
 
       {image && <img src={image} alt="Scanned Document" className="mt-4" />}
       <OCR image={image} />
