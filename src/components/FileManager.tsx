@@ -309,7 +309,7 @@ const FileManager: React.FC = () => {
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
           onEdit={handleEdit}
-          document={{ ...document, category: { ...document.category, id: document.category.id || "" } }}
+          document={{ ...document, category: { ...document.category, id: document?.category?.id || "" } }}
         />
       )}
       
