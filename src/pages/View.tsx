@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -6,7 +6,7 @@ import SideMenu from "../components/SideMenu";
 import { useParams } from "react-router-dom";
 // import workerSrc from 'pdfjs-dist/build/pdf.worker.entry';
 import workerSrc from "pdfjs-dist/build/pdf.worker.entry";
-import { div } from "@tensorflow/tfjs";
+
 
 // Fix: Use the locally installed worker
 //import workerSrc from "pdfjs-dist/build/pdf.worker.min.js";
@@ -18,7 +18,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 const PDFViewer: React.FC = () => {
     const url = useParams();
-  const [pdfFile, setPdfFile] = useState<string | null>(`/Atelier-A2.pdf`);
+  const [pdfFile, setPdfFile] = useState<string | null>(null);//(`http://localhost:3500/uploads/1742901766307-122498855.pdf`);
   const [numPages, setNumPages] = useState<number | null>(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [scale, setScale] = useState(1.0);
@@ -27,33 +27,39 @@ const PDFViewer: React.FC = () => {
     setNumPages(numPages);
   };
 
-  console.log(url)
+//   setPdfFile(`${process.env.REACT_APP_API_URL}/uploads/${url}`)
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && file.type === "application/pdf") {
-      const fileUrl = URL.createObjectURL(file);
-      console.log(fileUrl);
-      setPdfFile(fileUrl);
-      setPageNumber(1);
-    } else {
-      alert("Please upload a valid PDF file.");
-    }
-  };
+
+  useEffect(() => {
+    setPdfFile(`${process.env.REACT_APP_API_URL}/uploads/${url.url}`)
+    }, []);
+//   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     const file = event.target.files?.[0];
+//     if (file && file.type === "application/pdf") {
+//       const fileUrl = URL.createObjectURL(file);
+//       console.log(fileUrl);
+//       setPdfFile(fileUrl);
+//       setPageNumber(1);
+//     } else {
+//       alert("Please upload a valid PDF file.");
+//     }
+//   };
 
   return (
     <div className="flex">
     <SideMenu />
+    
     <div className="flex flex-col items-center p-4 bg-gray-100 w-full min-h-screen">
-      <h2 className="text-xl font-bold mb-4">PDF Viewer</h2>
+    <h2 className="bg-green-900 text-white py-3 rounded-lg hover:bg-green-800 transition w-full mb-3 text-center" >View Document</h2> 
+
 
       {/* Upload File Input */}
-      <input
+      {/* <input
         type="file"
         accept="application/pdf"
         onChange={handleFileChange}
         className="mb-4 p-2 border rounded bg-white shadow-md"
-      />
+      /> */}
 
       {/* PDF Display */}
       {pdfFile ? (

@@ -14,29 +14,32 @@ import Library from "./pages/Library";
 import View from "./pages/View";
 import Scan from "./pages/Scan";
 import Ocr from "./pages/Ocr"
+import Manager from "./pages/Manager";
+import DashboardLibrary from "./pages/DashboardLibrary";
+import DashboardManagement from "./pages/DashboardManagement";
 import Scanner from "./components/Scanner";
 // import OCR from "./components/OCR";
 import PDFExport from "./components/PDFExport";
 
 const App: React.FC = () => {
   const auth = useContext(AuthContext);
-  const [image, setImage] = useState<string | null>(null);
-  const [text, setText] = useState<string>("");
-
+  
   return (
     
     <Router>
     
    <Routes>
-      <Route path="/" element={auth?.user ? (<Dashboard/>):(<Login/>)} />
+      <Route path="/" element={auth?.user ? (<DashboardLibrary/>):(<Login/>)} />
       <Route path="/login" element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/public" element={<Dashboard />} />
+      <Route path="/management" element={<DashboardManagement />} />
       <Route
-        path="/dashboard"
+        path="/dashboard" 
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <DashboardLibrary />
           </ProtectedRoute>
         }
       />
@@ -45,9 +48,10 @@ const App: React.FC = () => {
       <Route path="/books/:id" element={<Book />} />
       <Route path="/authors/:id" element={<Author />} />
       <Route path="/library" element={<Library />} />
-      <Route path="/view/:url" element={<View />} />
+      <Route path="/view/uploads/:url" element={<View />} />
       <Route path="/scan" element={<Scan/>} />
       <Route path="/ocr" element={<Ocr/>} />
+      <Route path="/manage" element={<Manager/>}/>
     </Routes>
   </Router>
   );

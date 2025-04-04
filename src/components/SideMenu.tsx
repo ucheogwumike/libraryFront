@@ -25,9 +25,9 @@ const SideMenu: React.FC = () => {
           <MenuItem icon={<FaBook />} text="Books" link="/library" isOpen={isOpen} />
           <MenuItem icon={<FaUser />} text="Profile" link="/profile" isOpen={isOpen} />
           <MenuItem icon={<FaUpload/>} text="Scan and Upload" link="/scan" isOpen={isOpen} />
-          <MenuItem icon={<FaToolbox />} text="Settings" link="/settings" isOpen={isOpen} />
+          <MenuItem icon={<FaToolbox />} text="Manage Library" link="/manage" isOpen={isOpen} />
           <MenuItem icon={<FaEye />} text="Create with OCR" link="/ocr" isOpen={isOpen} />
-          <MenuItem icon={<FaSignOutAlt />} text="Logout" link="/logout" isOpen={isOpen} />
+          <MenuItem icon={<FaSignOutAlt />} text="Logout" link="/login" isOpen={isOpen} />
           
           <img src={logo} alt="NALTF Logo" className="w-24 h-24 m-auto" />
         </ul>

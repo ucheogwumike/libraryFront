@@ -74,31 +74,31 @@ const Document: React.FC = () => {
           
           {/* Wishlist & Compare */}
           <div className="flex space-x-4 text-gray-500">
-            <button className="hover:text-gray-800" onClick={() => handleCardClick(product.url)}> read</button>
-            <button className="hover:text-gray-800"> download</button>
+            <button className="mt-6 px-6 py-2 bg-green-900 text-white font-semibold rounded-md hover:bg-green-700 transition" onClick={() => handleCardClick(product.url)}> read</button>
+            {/* <button className="hover:text-gray-800"> download</button> */}
           </div>
 
           <p className="text-gray-700">{product.description}</p>
-          <p className="text-2xl font-bold">{product.price}</p>
+          {/* <p className="text-2xl font-bold">{product.price}</p> */}
 
           {/* Quantity Selector & Order Button */}
-          <div className="flex items-center space-x-4">
+          {/* <div className="flex items-center space-x-4">
             <input
               type="number"
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
               min="1"
               className="w-16 p-2 border rounded-md"
-            />
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2 rounded-md">
+            /> */}
+            {/* <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2 rounded-md">
               🛒 Order
-            </button>
-          </div>
+            </button> */}
+          {/* </div> */}
 
           {/* Wishlist Link */}
-          <div className="text-blue-500 hover:text-blue-600 cursor-pointer">
+          {/* <div className="text-blue-500 hover:text-blue-600 cursor-pointer">
             ⭐ Add to Wishlist
-          </div>
+          </div> */}
         </div>
       </div>
 

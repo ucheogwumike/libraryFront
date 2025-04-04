@@ -29,12 +29,12 @@ const PDFViewer: React.FC = () => {
       <h2 className="text-xl font-bold mb-4">PDF Viewer</h2>
 
       {/* Upload File Input */}
-      <input
+      {/* <input
         type="file"
         accept="application/pdf"
         onChange={handleFileChange}
         className="mb-4 p-2 border rounded bg-white shadow-md"
-      />
+      /> */}
 
       {/* PDF Display */}
       {pdfFile ? (

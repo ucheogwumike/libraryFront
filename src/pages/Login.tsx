@@ -23,7 +23,7 @@ const Login: React.FC = () => {
       <div className="w-1/2 bg-green-900 text-white flex flex-col justify-center items-center p-10">
         <img src={logo} alt="NALTF Logo" className="w-24 h-24 mb-4" />
         <h1 className="text-3xl font-bold">NALTF</h1>
-        <p className="text-center text-sm mt-2">
+        <p className="text-center text-lg  mt-2">
           The National Assembly Library Trust Fund stands as a bastion of knowledge, committed to fostering a culture of enlightenment, research, and informed decision-making.
         </p>
       </div>
