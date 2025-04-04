@@ -15,7 +15,7 @@ interface Document {
     filename: string;
     type: string;
     createdAt: string;
-    category:{ id: string; name: string };
+    category:{ id: string | null; name: string };
     status: string;
     coverPage: string;
     url: string;
@@ -131,7 +131,9 @@ const FileManager: React.FC = () => {
     formData.append("filename", document.filename);
     formData.append("status", document.status);
     formData.append("type", document.type);
-    formData.append("category",document.category.id)
+    if (document?.category?.id) {
+      formData.append("category", document.category.id);
+    }
     formData.append("id", document.id);
 
     console.log(formData)
@@ -307,7 +309,7 @@ const FileManager: React.FC = () => {
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
           onEdit={handleEdit}
-          document={document}
+          document={{ ...document, category: { ...document.category, id: document.category.id || "" } }}
         />
       )}
       

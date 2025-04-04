@@ -17,7 +17,7 @@ interface UploadModalProps {
     filename: string;
     type: string;
     createdAt: string;
-    category:{ id: string; name: string };
+    category:{ id: string|null; name: string };
     status: string;
     coverPage: string;
     url: string;
@@ -28,7 +28,7 @@ const EditDocumentModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onEdit
   }) => {
   const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
   const [selectedType, setSelectedType] = useState<string>(document.type);
-  const [selectedCategory, setSelectedCategory] = useState<string>(document.category.id);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(document?.category?.id);
   const [selectedStatus, setSelectedStatus] = useState<string>(document.status);
   const [docName, setDocName] = useState<string>(document.filename);
 
@@ -80,7 +80,7 @@ const EditDocumentModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onEdit
         <label className="block mb-2 text-sm font-medium">Category</label>
         <select
           className="w-full p-2 border rounded mb-4"
-          value={selectedCategory}
+          value={selectedCategory || ""}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           {/* <option value="">Select a category</option> */}
